@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "compile": "ligo compile contract counter.ligo -o counter.tz",
+    "storage": "ligo compile storage counter.ligo -e main 5",
+    "deploy": "tezos-client originate contract counter transferring 1 from alice running counter.tz --init '0' --burn-cap 0.12525",
+    "test:increment": "ligo run dry-run counter.ligo \"Increment(32)\" \"10\"",
+    "test:decrement": "ligo run dry-run counter.ligo \"Decrement(32)\" \"10\"",
+    "test:test": "node tests/test.js"
+  },
+  "name": "0_hello",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@taquito/signer": "^11.1.0",
+    "@taquito/taquito": "^11.1.0",
+    "@taquito/tezbridge-signer": "^11.1.0"
+  }
+}
